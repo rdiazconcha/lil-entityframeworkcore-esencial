@@ -8,7 +8,27 @@ namespace Consultas
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var db = new MusicDbContext();
+
+            var newBand = new Band();
+            newBand.Name = "Pearl Jam";
+
+            var newAlbum = new Album();
+            newAlbum.Title = "Ten";
+            newAlbum.Year = 1991;
+            newAlbum.Style = MusicStyle.Grunge;
+
+            newBand.Albums = new List<Album>();
+            newBand.Albums.Add(newAlbum);
+
+            db.Bands.Add(newBand);
+
+
+            db.SaveChanges();
+
+            System.Console.WriteLine("Presione cualquier tecla...");
+            Console.ReadLine();
+
         }
     }
 
