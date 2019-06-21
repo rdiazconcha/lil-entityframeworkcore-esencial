@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 
 namespace Movies
@@ -82,7 +83,13 @@ namespace Movies
 
     class Movie {
         public int Id { get; set; }
+
+        [Required]
+        [MaxLength(500)]
         public string Name { get; set; }
+
+        [Required]
+        [Range(1900, 2024)]
         public int Year { get; set; }
     }
 
