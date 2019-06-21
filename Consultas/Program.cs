@@ -10,7 +10,16 @@ namespace Consultas
         {
             var db = new MusicDbContext();
 
-            var newBand = new Band();
+            var results = db.Bands.ToListAsync().Result;
+
+            foreach (var band in results){
+                System.Console.WriteLine(band.Name);
+            }
+        }
+
+        static void Insert(){
+            var db = new MusicDbContext();
+             var newBand = new Band();
             newBand.Name = "Pearl Jam";
 
             var newAlbum = new Album();
@@ -28,7 +37,6 @@ namespace Consultas
 
             System.Console.WriteLine("Presione cualquier tecla...");
             Console.ReadLine();
-
         }
     }
 
