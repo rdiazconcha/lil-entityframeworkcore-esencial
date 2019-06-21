@@ -16,7 +16,15 @@ namespace Migrations
 
         public string Title { get; set; }
 
+        public int Year { get; set; }
+
         public MusicStyle Style { get; set; }
+    }
+
+    class Band {
+        public int Id { get; set; }
+        public string Name { get; set; }
+
     }
 
     enum MusicStyle{
@@ -30,8 +38,10 @@ namespace Migrations
     class MusicDbContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
-            optionsBuilder.UseSqlServer(@"Data source=(localdb)\MSSQLLocalDB; Initial Catalog=Movies;Integrated Security=true");
+            optionsBuilder.UseSqlServer(@"Data source=(localdb)\MSSQLLocalDB; Initial Catalog=Music;Integrated Security=true");
         }
         public DbSet<Album> Albums {get; set;}
+
+        public DbSet<Band> Bands {get;set;}
     }
 }
