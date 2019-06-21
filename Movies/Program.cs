@@ -3,9 +3,56 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Movies
 {
-    class Program
+     class Program
     {
         static void Main(string[] args)
+        {
+            var db = new MoviesDbContext();
+
+            ShowMenu(db);
+            
+
+            System.Console.WriteLine("Presione cualquier tecla para salir...");
+            Console.ReadLine();
+        }
+
+        private static void Show(MoviesDbContext db)
+        {
+            var all = db.Movies.ToListAsync().Result;
+            
+            if (all!=null){
+                foreach (var movie in all){
+                    System.Console.WriteLine(movie.Name);
+                }
+            }
+            
+            
+            ShowMenu(db);
+        }
+
+        private static void ShowMenu(MoviesDbContext db)
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            System.Console.WriteLine();
+            System.Console.WriteLine("Presione la opción deseada");
+            System.Console.WriteLine("1.- Consultar las películas");
+            System.Console.WriteLine("2.- Crear película");
+            System.Console.WriteLine();
+
+            var option = Console.ReadLine();
+
+            Console.ForegroundColor = ConsoleColor.Gray;
+
+            if (option == "1"){
+                Show(db);
+            }
+            else{
+                Create(db);
+            }
+            
+        }
+
+        private static void Create(MoviesDbContext db)
         {
             System.Console.WriteLine("Escriba el nombre de la película:");
             var name = Console.ReadLine();
@@ -16,7 +63,7 @@ namespace Movies
             newMovie.Name = name;
             newMovie.Year = int.Parse(year);
 
-            var db = new MoviesDbContext();
+            
             db.Movies.Add(newMovie);
 
             var result = db.SaveChanges();
@@ -28,8 +75,7 @@ namespace Movies
                 System.Console.WriteLine("Error");
             }
 
-            System.Console.WriteLine("Presione cualquier tecla para salir...");
-            Console.ReadLine();
+            ShowMenu(db);
 
         }
     }
