@@ -10,6 +10,24 @@ namespace Consultas
         {
             var db = new MusicDbContext();
 
+            var results = db.Bands
+                            .Include(b => b.Albums)
+                            .ToListAsync().Result;
+
+            foreach (var band in results) {
+                System.Console.WriteLine(band.Name);
+                foreach (var album in band.Albums){
+                    System.Console.WriteLine("    " + album.Title);
+                }
+
+                System.Console.WriteLine();
+            }
+
+        }
+
+        static void Simple(){
+            var db = new MusicDbContext();
+
             var results = db.Bands.ToListAsync().Result;
 
             foreach (var band in results){
