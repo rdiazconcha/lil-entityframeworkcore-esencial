@@ -10,6 +10,25 @@ namespace Consultas
         {
             var db = new MusicDbContext();
 
+            var result = db.Bands
+                           .Include(b => b.Albums)
+                           .SingleAsync(b => b.Id == 2)
+                           .Result;
+
+            result.Name = "Pearl Jam 2";
+
+            result.Albums.Add(new Album(){
+                Title = "Vs.",
+                Year = 1993,
+                Style = MusicStyle.Grunge
+            });
+
+            db.SaveChanges();
+        }
+
+        static void Related(){
+            var db = new MusicDbContext();
+
             var results = db.Bands
                             .Include(b => b.Albums)
                             .ToListAsync().Result;
@@ -22,7 +41,6 @@ namespace Consultas
 
                 System.Console.WriteLine();
             }
-
         }
 
         static void Simple(){
