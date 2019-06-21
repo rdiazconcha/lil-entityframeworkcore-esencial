@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
 namespace Migrations
@@ -19,11 +20,15 @@ namespace Migrations
         public int Year { get; set; }
 
         public MusicStyle Style { get; set; }
+
+        public int BandId { get; set; }
     }
 
     class Band {
         public int Id { get; set; }
         public string Name { get; set; }
+
+        public List<Album> Albums { get; set; }
 
     }
 
