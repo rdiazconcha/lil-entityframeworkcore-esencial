@@ -2,4 +2,4 @@
 ## Curso de LinkedIn Learning en español
 https://www.linkedin.com/learning/dot-net-entity-framework-core-esencial/el-universo-de-entity-framework-core
 
-Conoce ASP.NET Core como plataforma de desarrollo. Aprende sobre sus características y funcionalidades más destacables así como sus componentes y manejo para la construcción de modernas aplicaciones web y servicios REST. Además, descubre Blazor, una moderna tecnología de Microsoft que hace uso de WebAssembly para construir soluciones con lenguajes de programación robustos.
+Aprende Entity Framework Core, la versión ligera, extensible, de código abierto y multiplataforma de la popular tecnología de acceso a datos Entity Framework. Conoce los fundamentos de este asignador relacional de objetos, qué es, los pasos esenciales para empezar a utilizarlo en tus proyectos y cuáles son las tareas y acciones más comunes que utilizarás. Consigue, con este curso, empezar a usar de manera efectiva esta productiva tecnología en tus soluciones de software.
